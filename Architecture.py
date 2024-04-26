@@ -63,9 +63,7 @@ class identity_block2(nn.Module):
         
         # Third layer
         nn.Conv2d(F2,F3, kernel_size = 1 , stride =1, padding = cal_padding(tensor_size,1,1)),
-        nn.BatchNorm2d(F3),
-        
-        
+        nn.BatchNorm2d(F3), 
         )
         self.relu = nn.ReLU()
 
@@ -91,9 +89,6 @@ class Resnet50 (nn.Module):
             nn.ReLU(),
         )
 
-
-
-
         self.stage_1_b1 = identity_block1(64,stage1,56)
         self.stage_1_b2 = identity_block2(256,stage1,56)
         self.stage_1_b3 = identity_block2(256,stage1,56)
@@ -115,8 +110,7 @@ class Resnet50 (nn.Module):
         self.stage_4_b3 = identity_block2(2048,stage4,7)
         
         self.classifier = nn.Sequential(
-            nn.AvgPool2d(kernel_size=7, stride = 2),
-            
+            nn.AvgPool2d(kernel_size=7, stride = 2),            
         )    
         self.linear = nn.Linear(2048,num_classes)
         self.max_pool2D = nn.MaxPool2d(kernel_size = 3, stride = 2,padding=1)
@@ -124,7 +118,7 @@ class Resnet50 (nn.Module):
     
     def forward(self, x):
         x = self.stem(x)
-        print(x.shape)
+        #print(x.shape)
         x = self.max_pool2D(x)
         #print("Before stage",x.shape)
 
