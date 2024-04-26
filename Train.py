@@ -9,6 +9,7 @@ import os
 
 current_path = os.path.dirname(os.path.abspath(__file__))
 data_root = os.path.join(current_path,"Dataset")
+num_class = len(os.listdir(data_root))
 
 transform = Compose([
     ToTensor(),
@@ -21,7 +22,7 @@ train_data = DataLoader(train_set, batch_size = 64, shuffle=True)
 test_set = ds.AnimalDataset(root=data_root,train=False, transform = transform)
 test_data = DataLoader(test_set, batch_size=64, shuffle=False)
 
-net = arch.Resnet50(3, 10)
+net = arch.Resnet50(3, num_class)
 optimizer = optimizer = torch.optim.Adam(net.parameters(), lr=0.01)
 criterion = nn.CrossEntropyLoss()
 

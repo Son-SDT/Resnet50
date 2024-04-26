@@ -102,7 +102,6 @@ class Resnet50 (nn.Module):
         self.stage_2_b2 = identity_block2(512,stage2,28)
         self.stage_2_b3 = identity_block2(512,stage2,28)
         self.stage_2_b4 = identity_block2(512,stage2,28)
-        self.stage_2_b5 = identity_block2(512,stage2,28)
         
         self.stage_3_b1 = identity_block1(512,stage3,14)
         self.stage_3_b2 = identity_block2(1024,stage3,14)

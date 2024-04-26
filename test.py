@@ -3,7 +3,7 @@ import torch
 from torchvision.transforms import Compose, ToTensor,Resize
 import os
 
-#put the test image folder path
+#put the test image folder path     
 Test_folder = ""
 
 current_path = os.path.dirname(os.path.abspath(__file__))
