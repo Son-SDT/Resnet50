@@ -14,7 +14,7 @@ class AnimalDataset(Dataset):
             root = f'{root}/train'
         else :
             root = f'{root}/test'
-        self.types =os.listdir(root)
+        self.types =os.listdir(root).sort()
         
         for type in self.types:
             data_folder = f'{root}/{type}'
@@ -41,3 +41,5 @@ class AnimalDataset(Dataset):
         
         label = self.labels[idx]
         return image, label
+    def get_type (self):
+        return self.types
